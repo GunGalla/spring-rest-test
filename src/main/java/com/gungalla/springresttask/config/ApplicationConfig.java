@@ -1,5 +1,6 @@
 package com.gungalla.springresttask.config;
 
+import com.gungalla.springresttask.web.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
+    private final JwtTokenProvider tokenProvider;
     private final ApplicationContext applicationContext;
 
     @Bean
@@ -53,7 +55,7 @@ public class ApplicationConfig {
                         .anyRequest()
                         .authenticated())
                 .anonymous(AbstractHttpConfigurer::disable)
-                .addFilterBefore(new JwtTokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new JwtTokenFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
     }
