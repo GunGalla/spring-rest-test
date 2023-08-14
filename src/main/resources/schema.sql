@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS tasklist;
+create schema if not exists tasklist;
 
 CREATE TABLE IF NOT EXISTS users
 (
