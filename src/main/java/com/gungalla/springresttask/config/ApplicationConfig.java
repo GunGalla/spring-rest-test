@@ -1,5 +1,6 @@
 package com.gungalla.springresttask.config;
 
+import com.gungalla.springresttask.web.security.JwtTokenFilter;
 import com.gungalla.springresttask.web.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationContext;
