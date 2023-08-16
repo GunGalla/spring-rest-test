@@ -67,7 +67,7 @@ public class TaskRepositoryImpl implements TaskRepository {
                 return Optional.ofNullable(TaskRowMapper.mapRow(rs));
             }
         } catch (SQLException e) {
-            throw new ResourceMappingException("Cannot find user by id.");
+            throw new ResourceMappingException("Cannot find task by id.");
         }
     }
 
@@ -139,7 +139,7 @@ public class TaskRepositoryImpl implements TaskRepository {
             }
             statement.setString(4, task.getStatus().name());
             statement.setLong(5, task.getId());
-            statement.executeQuery();
+            statement.executeUpdate();
             try (ResultSet rs = statement.getGeneratedKeys()) {
                 rs.next();
                 task.setId(rs.getLong(1));
