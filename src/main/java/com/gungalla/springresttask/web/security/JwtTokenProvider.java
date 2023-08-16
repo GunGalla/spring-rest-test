@@ -85,12 +85,12 @@ public class JwtTokenProvider {
     }
 
     public boolean validateToken(String token) {
-            Jwt<Header, Claims> claims = Jwts
-                    .parserBuilder()
-                    .setSigningKey(key)
-                    .build()
-                    .parseClaimsJwt(token);
-            return !claims.getBody().getExpiration().before(new Date());
+        Jwt<Header, Claims> claims = Jwts
+                .parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJwt(token);
+        return !claims.getBody().getExpiration().before(new Date());
     }
 
     private String getId(String token) {
@@ -113,6 +113,7 @@ public class JwtTokenProvider {
                 .getBody()
                 .getSubject();
     }
+
     public Authentication getAuthentication(String token) {
         String username = getUsername(token);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
