@@ -85,11 +85,11 @@ public class JwtTokenProvider {
     }
 
     public boolean validateToken(String token) {
-        Jwt<Header, Claims> claims = Jwts
+        Jws<Claims> claims = Jwts
                 .parserBuilder()
                 .setSigningKey(key)
                 .build()
-                .parseClaimsJwt(token);
+                .parseClaimsJws(token);
         return !claims.getBody().getExpiration().before(new Date());
     }
 
@@ -98,7 +98,7 @@ public class JwtTokenProvider {
                 .parserBuilder()
                 .setSigningKey(key)
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody()
                 .get("id")
                 .toString();
@@ -109,7 +109,7 @@ public class JwtTokenProvider {
                 .parserBuilder()
                 .setSigningKey(key)
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
     }

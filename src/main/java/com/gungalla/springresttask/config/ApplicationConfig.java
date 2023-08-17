@@ -51,7 +51,8 @@ public class ApplicationConfig {
                                     response.setStatus(HttpStatus.FORBIDDEN.value());
                                     response.getWriter().write("Unauthorized.");
                                 }))
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/**").permitAll()
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/**")
+                        .permitAll()
                         .anyRequest()
                         .authenticated())
                 .anonymous(AbstractHttpConfigurer::disable)

@@ -125,7 +125,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     public void create(Task task) {
         try {
             Connection connection = dataSourceConfig.getConnection();
-            PreparedStatement statement = connection.prepareStatement(UPDATE);
+            PreparedStatement statement = connection.prepareStatement(CREATE, PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, task.getTitle());
             if (task.getDescription() == null) {
                 statement.setNull(2, Types.VARCHAR);
@@ -133,12 +133,11 @@ public class TaskRepositoryImpl implements TaskRepository {
                 statement.setString(2, task.getDescription());
             }
             if (task.getExpirationDate() == null) {
-                statement.setNull(2, Types.TIMESTAMP);
+                statement.setNull(3, Types.TIMESTAMP);
             } else {
                 statement.setTimestamp(3, Timestamp.valueOf(task.getExpirationDate()));
             }
             statement.setString(4, task.getStatus().name());
-            statement.setLong(5, task.getId());
             statement.executeUpdate();
             try (ResultSet rs = statement.getGeneratedKeys()) {
                 rs.next();

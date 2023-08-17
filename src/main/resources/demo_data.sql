@@ -1,6 +1,6 @@
 INSERT INTO tasklist.users (name, username, password)
-values ('Jane Lake', 'janelake@gmail.com', '$2a$12$KArfIpepmR/VQkQO7g1K9./RCwPWihdj4CK592BtKW1zys2SszzQm'),
-       ('Kirill Vasovsky', 'mikevaz@gmail.com', '$2a$12$hiSWPCGJwXktvzXTCsFIEe.Q1sUG07ZPKtuNgl5sWrM6N4KFWVLfG');
+values ('Jane Lake', 'janelake@gmail.com', '$2a$12$pi/Aqr9pXfMbGkLqpkdB7uMNJcliKOZVhKXGRJ.kS69Xgcrmia2ba'),
+       ('Kirill Vasovsky', 'mikevaz@gmail.com', '$2a$12$pi/Aqr9pXfMbGkLqpkdB7uMNJcliKOZVhKXGRJ.kS69Xgcrmia2ba');
 
 INSERT INTO tasklist.tasks (title, description, status, expiration_date)
 values ('Wash windows', null, 'TODO', '2023-08-16 12:30:00'),
