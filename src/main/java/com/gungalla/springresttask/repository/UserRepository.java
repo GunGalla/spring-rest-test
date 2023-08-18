@@ -2,6 +2,7 @@ package com.gungalla.springresttask.repository;
 
 import com.gungalla.springresttask.domain.user.Role;
 import com.gungalla.springresttask.domain.user.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Optional;
 
@@ -15,9 +16,9 @@ public interface UserRepository {
 
     void create(User user);
 
-    void insertUserRole(Long userId, Role role);
+    void insertUserRole(@Param("userId") Long userId, @Param("role") Role role);
 
-    boolean isTaskOwner(Long userId, Long taskId);
+    boolean isTaskOwner(@Param("userId") Long userId, @Param("taskId") Long taskId);
 
     void delete(Long id);
 
