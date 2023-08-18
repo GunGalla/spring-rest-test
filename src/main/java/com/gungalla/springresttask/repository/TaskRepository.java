@@ -1,6 +1,7 @@
 package com.gungalla.springresttask.repository;
 
 import com.gungalla.springresttask.domain.task.Task;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +12,7 @@ public interface TaskRepository {
 
     List<Task> findAllByUserId(Long userId);
 
-    void assignToUserById(Long taskId, Long userId);
+    void assignToUserById(@Param("taskId") Long taskId, @Param("userId") Long userId);
 
     void update(Task task);
 

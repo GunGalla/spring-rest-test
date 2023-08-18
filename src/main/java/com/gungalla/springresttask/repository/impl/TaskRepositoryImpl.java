@@ -25,7 +25,7 @@ public class TaskRepositoryImpl implements TaskRepository {
                    t.expiration_date as task_expiration_date,
                    t.status          as task_status
             FROM tasks t
-            WHERE id = ?""";
+            WHERE t.id = ?""";
 
     private final String FIND_ALL_BY_USER_ID = """
             SELECT t.id              as task_id,
@@ -50,7 +50,7 @@ public class TaskRepositoryImpl implements TaskRepository {
             WHERE id = ?""";
 
     private final String CREATE = """
-             INSERT INTO tasks (title, description, expiration_date, status)
+            INSERT INTO tasks (title, description, expiration_date, status)
             VALUES (?, ?, ?, ?)""";
 
     private final String DELETE = """
@@ -102,7 +102,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     public void update(Task task) {
         try {
             Connection connection = dataSourceConfig.getConnection();
-            PreparedStatement statement = connection.prepareStatement(CREATE, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement(UPDATE, PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, task.getTitle());
             if (task.getDescription() == null) {
                 statement.setNull(2, Types.VARCHAR);
@@ -115,6 +115,7 @@ public class TaskRepositoryImpl implements TaskRepository {
                 statement.setTimestamp(3, Timestamp.valueOf(task.getExpirationDate()));
             }
             statement.setString(4, task.getStatus().name());
+            statement.setLong(5, task.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new ResourceMappingException("Cannot update task.");
