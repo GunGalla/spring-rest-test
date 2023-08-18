@@ -2,10 +2,12 @@ package com.gungalla.springresttask.repository;
 
 import com.gungalla.springresttask.domain.user.Role;
 import com.gungalla.springresttask.domain.user.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Optional;
 
+@Mapper
 public interface UserRepository {
 
     Optional<User> findById(Long id);
