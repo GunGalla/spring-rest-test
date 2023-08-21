@@ -51,10 +51,10 @@ public class ApplicationConfig {
                                     response.setStatus(HttpStatus.FORBIDDEN.value());
                                     response.getWriter().write("Unauthorized.");
                                 }))
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/api/v1/auth/**")
-                        .permitAll()
-                        .anyRequest()
-                        .authenticated())
+                .authorizeHttpRequests(auth ->
+                        auth.requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .anyRequest().authenticated())
                 .anonymous(AbstractHttpConfigurer::disable)
                 .addFilterBefore(new JwtTokenFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class);
 
