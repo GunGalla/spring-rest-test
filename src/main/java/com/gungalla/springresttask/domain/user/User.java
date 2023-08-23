@@ -3,11 +3,12 @@ package com.gungalla.springresttask.domain.user;
 import com.gungalla.springresttask.domain.task.Task;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
 @Data
-public class User {
+public class User implements Serializable {
 
     private Long id;
     private String name;
