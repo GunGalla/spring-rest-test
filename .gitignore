@@ -33,5 +33,4 @@ build/
 .vscode/
 
 
-/src/main/resources/application.yaml
-/docker-compose.yaml
+/.env
