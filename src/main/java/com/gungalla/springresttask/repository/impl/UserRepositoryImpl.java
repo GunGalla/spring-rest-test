@@ -3,11 +3,9 @@ package com.gungalla.springresttask.repository.impl;
 import com.gungalla.springresttask.domain.exception.ResourceMappingException;
 import com.gungalla.springresttask.domain.user.Role;
 import com.gungalla.springresttask.domain.user.User;
-import com.gungalla.springresttask.repository.DataSourceConfig;
 import com.gungalla.springresttask.repository.UserRepository;
 import com.gungalla.springresttask.repository.mappers.UserRowMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -2,11 +2,9 @@ package com.gungalla.springresttask.repository.impl;
 
 import com.gungalla.springresttask.domain.exception.ResourceMappingException;
 import com.gungalla.springresttask.domain.task.Task;
-import com.gungalla.springresttask.repository.DataSourceConfig;
 import com.gungalla.springresttask.repository.TaskRepository;
 import com.gungalla.springresttask.repository.mappers.TaskRowMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.List;

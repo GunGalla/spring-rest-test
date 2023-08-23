@@ -1,25 +1,12 @@
 package com.gungalla.springresttask.repository;
 
 import com.gungalla.springresttask.domain.task.Task;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
-@Mapper
-public interface TaskRepository {
-
-    Optional<Task> findById(Long id);
+public interface TaskRepository extends JpaRepository<Task, Long> {
 
     List<Task> findAllByUserId(Long userId);
-
-    void assignToUserById(@Param("taskId") Long taskId, @Param("userId") Long userId);
-
-    void update(Task task);
-
-    void create(Task task);
-
-    void delete(Long id);
 
 }
