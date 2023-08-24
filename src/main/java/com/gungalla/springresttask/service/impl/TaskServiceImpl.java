@@ -3,6 +3,7 @@ package com.gungalla.springresttask.service.impl;
 import com.gungalla.springresttask.domain.exception.ResourceNotFoundException;
 import com.gungalla.springresttask.domain.task.Status;
 import com.gungalla.springresttask.domain.task.Task;
+import com.gungalla.springresttask.domain.task.TaskImage;
 import com.gungalla.springresttask.domain.user.User;
 import com.gungalla.springresttask.repository.TaskRepository;
 import com.gungalla.springresttask.service.TaskService;
@@ -64,6 +65,16 @@ public class TaskServiceImpl implements TaskService {
     @CacheEvict(value = "TaskService::getById", key = "#id")
     public void delete(Long id) {
         taskRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    @CacheEvict(value = "TaskService::getById", key = "#id")
+    public void uploadImage(Long id, TaskImage image) {
+        Task task = getById(id);
+        String fileName = imageService.upload(image);
+        task.getImages().add(fileName);
+        taskRepository.save(task);
     }
 
 }

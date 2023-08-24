@@ -1,9 +1,12 @@
 package com.gungalla.springresttask.web.controller;
 
 import com.gungalla.springresttask.domain.task.Task;
+import com.gungalla.springresttask.domain.task.TaskImage;
 import com.gungalla.springresttask.service.TaskService;
 import com.gungalla.springresttask.web.dto.task.TaskDto;
+import com.gungalla.springresttask.web.dto.task.TaskImageDto;
 import com.gungalla.springresttask.web.dto.validation.OnUpdate;
+import com.gungalla.springresttask.web.mappers.TaskImageMapper;
 import com.gungalla.springresttask.web.mappers.TaskMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,6 +25,7 @@ public class TaskController {
     private final TaskService taskService;
 
     private final TaskMapper taskMapper;
+    private final TaskImageMapper taskImageMapper;
 
     @PutMapping
     @Operation(summary = "Update task")
@@ -45,6 +49,15 @@ public class TaskController {
     @PreAuthorize("@customSecurityExpression.canAccessTask(#id)")
     public void deleteById(@PathVariable Long id) {
         taskService.delete(id);
+    }
+
+    @PostMapping("/{id}/image")
+    @Operation(summary = "Upload image to task")
+    @PreAuthorize("@customSecurityExpression.canAccessTask(#id)")
+    public void uploadImage(@PathVariable Long id,
+                            @Validated @ModelAttribute TaskImageDto imageDto) {
+        TaskImage image = taskImageMapper.toEntity(imageDto);
+        taskService.uploadImage(id, image);
     }
 
 }
