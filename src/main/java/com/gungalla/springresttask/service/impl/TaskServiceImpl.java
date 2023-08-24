@@ -6,6 +6,7 @@ import com.gungalla.springresttask.domain.task.Task;
 import com.gungalla.springresttask.domain.task.TaskImage;
 import com.gungalla.springresttask.domain.user.User;
 import com.gungalla.springresttask.repository.TaskRepository;
+import com.gungalla.springresttask.service.ImageService;
 import com.gungalla.springresttask.service.TaskService;
 import com.gungalla.springresttask.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
     private final UserService userService;
+    private final ImageService imageService;
 
     @Override
     @Transactional(readOnly = true)
