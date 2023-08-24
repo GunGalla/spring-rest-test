@@ -27,6 +27,7 @@
         <liquibase.version>4.23.1</liquibase.version>
         <preliquibase.version>1.4.0</preliquibase.version>
         <springdoc.version>2.2.0</springdoc.version>
+        <minio.version>8.5.5</minio.version>
     </properties>
 
     <dependencies>
@@ -134,6 +135,12 @@
             <groupId>net.lbruun.springboot</groupId>
             <artifactId>preliquibase-spring-boot-starter</artifactId>
             <version>${preliquibase.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>${minio.version}</version>
         </dependency>
 
     </dependencies>

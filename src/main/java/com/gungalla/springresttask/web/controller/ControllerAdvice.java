@@ -1,9 +1,6 @@
 package com.gungalla.springresttask.web.controller;
 
-import com.gungalla.springresttask.domain.exception.AccessDeniedException;
-import com.gungalla.springresttask.domain.exception.ExceptionBody;
-import com.gungalla.springresttask.domain.exception.ResourceMappingException;
-import com.gungalla.springresttask.domain.exception.ResourceNotFoundException;
+import com.gungalla.springresttask.domain.exception.*;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
@@ -69,6 +66,12 @@ public class ControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ExceptionBody handleAuthentication(AuthenticationException e) {
         return new ExceptionBody("Authentication failed");
+    }
+
+    @ExceptionHandler(ImageUploadException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ExceptionBody handleImageUpload(ImageUploadException  e) {
+        return new ExceptionBody(e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
