@@ -1,7 +1,7 @@
 package com.gungalla.springresttask.service;
 
-import com.gungalla.springresttask.web.dto.auth.JwtResponse;
 import com.gungalla.springresttask.web.dto.auth.JwtRequest;
+import com.gungalla.springresttask.web.dto.auth.JwtResponse;
 
 
 public interface AuthService {
