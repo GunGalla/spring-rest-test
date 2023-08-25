@@ -23,7 +23,7 @@ type Task {
     images: [String]
 }
 
-type Task {
+input InputTask {
     id: ID
     title: String
     description: String
