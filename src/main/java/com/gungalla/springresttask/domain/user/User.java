@@ -14,7 +14,7 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -31,7 +31,7 @@ public class User implements Serializable {
     private Set<Role> roles;
 
     @CollectionTable(name = "users_tasks")
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "task_id")
     private List<Task> tasks;
 
