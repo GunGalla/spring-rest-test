@@ -6,7 +6,7 @@ A simple and flexible task management web application building with REST API by 
 
 To check how it works you can send requests via Swagger:
 
-`http://localhost:8080/swagger-ui/index.html`
+- `http://localhost:8080/swagger-ui/index.html`
 
 Minimum required software to install the project is:
 

@@ -18,12 +18,18 @@ public class UserDto {
 
     @Schema(description = "User name", example = "Jane Lake")
     @NotNull(message = "Name must be not null.", groups = {OnCreate.class, OnUpdate.class})
-    @Length(max = 255, message = "Name length must be smaller than 255 symbols", groups = {OnCreate.class, OnUpdate.class})
+    @Length(max = 255,
+            message = "Name length must be smaller than 255 symbols",
+            groups = {OnCreate.class, OnUpdate.class}
+    )
     private String name;
 
     @Schema(description = "User email", example = "janelake@gmail.com")
     @NotNull(message = "Username must be not null.", groups = {OnCreate.class, OnUpdate.class})
-    @Length(max = 255, message = "Username length must be smaller than 255 symbols", groups = {OnCreate.class, OnUpdate.class})
+    @Length(max = 255,
+            message = "Username length must be smaller than 255 symbols",
+            groups = {OnCreate.class,
+                    OnUpdate.class})
     private String username;
 
     @Schema(description = "User password", example = "qwerty")

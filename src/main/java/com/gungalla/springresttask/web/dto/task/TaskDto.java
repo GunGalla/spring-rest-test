@@ -24,11 +24,19 @@ public class TaskDto {
 
     @Schema(description = "Task title", example = "Create an app")
     @NotNull(message = "Title must be not null.", groups = {OnCreate.class, OnUpdate.class})
-    @Length(max = 255, message = "Title length must be smaller than 255 symbols", groups = {OnCreate.class, OnUpdate.class})
+    @Length(
+            max = 255,
+            message = "Title length must be smaller than 255 symbols",
+            groups = {OnCreate.class, OnUpdate.class}
+    )
     private String title;
 
     @Schema(description = "Task description", example = "App must be able to manage tasks and use REST API")
-    @Length(max = 255, message = "Description length must be smaller than 255 symbols", groups = {OnCreate.class, OnUpdate.class})
+    @Length(
+            max = 255,
+            message = "Description length must be smaller than 255 symbols",
+            groups = {OnCreate.class, OnUpdate.class}
+    )
     private String description;
 
     @Schema(description = "Task status", example = "TODO")
