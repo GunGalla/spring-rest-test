@@ -1,4 +1,4 @@
-# Task manager API: manage your task in a programmer way :)
+# Task manager API: manage your task in a programmer way
 
 <p>
 A simple and flexible task management web application building with REST API by Spring Boot.
