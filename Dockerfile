@@ -1,6 +1,8 @@
 FROM maven as build
 WORKDIR /
 COPY /src /src
+COPY checkstyle-module.xml /
+COPY checkstyle-suppressions.xml /
 COPY pom.xml /
 RUN mvn -f /pom.xml clean package
 
