@@ -4,11 +4,9 @@ import com.gungalla.springresttask.domain.exception.ResourceNotFoundException;
 import com.gungalla.springresttask.domain.task.Status;
 import com.gungalla.springresttask.domain.task.Task;
 import com.gungalla.springresttask.domain.task.TaskImage;
-import com.gungalla.springresttask.domain.user.User;
 import com.gungalla.springresttask.repository.TaskRepository;
 import com.gungalla.springresttask.service.ImageService;
 import com.gungalla.springresttask.service.TaskService;
-import com.gungalla.springresttask.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -23,7 +21,6 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository taskRepository;
-    private final UserService userService;
     private final ImageService imageService;
 
     @Override
@@ -57,7 +54,6 @@ public class TaskServiceImpl implements TaskService {
             condition = "#task.id!=null",
             key = "#task.id")
     public Task create(Task task, Long userId) {
-        User user = userService.getById(userId);
         task.setStatus(Status.TODO);
         taskRepository.save(task);
         taskRepository.assignTask(userId, task.getId());
